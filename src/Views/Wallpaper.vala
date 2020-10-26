@@ -417,13 +417,8 @@ public class PantheonShell.Wallpaper : Gtk.Grid {
         // Add user background directory first
         background_directories += get_local_bg_directory ();
 
-        foreach (unowned string data_dir in Environment.get_system_data_dirs ()) {
-            var system_background_dir = Path.build_filename (data_dir, "backgrounds") + "/";
-            if (FileUtils.test (system_background_dir, FileTest.EXISTS)) {
-                debug ("Found system background directory: %s", system_background_dir);
-                background_directories += system_background_dir;
-            }
-        }
+        var system_background_dir = "@DIR@";
+        background_directories += system_background_dir;
 
         if (background_directories.length == 0) {
             warning ("No background directories found");
